@@ -32,8 +32,8 @@ usersテーブル
 |password|string|null: false|
 
 ### Association
-- has_many :groups, through: :group_user
-- has_many :group_user
+- has_many :groups, through: :group_users
+- has_many :group_users
 - has_many :messages
 
 groupsテーブル
@@ -48,7 +48,7 @@ groupsテーブル
 - has_many :group_users
 - has_many :messages
 
-group_userテーブル
+group_usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
