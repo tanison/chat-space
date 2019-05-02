@@ -27,7 +27,7 @@ usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, add_index, unique|
 |email|string|null: false, add_index|
 |password|string|null: false|
 
@@ -41,7 +41,6 @@ groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, add_index|
-|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :users, through: :group_users
@@ -63,11 +62,10 @@ messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text|null: true|
 |image|string|null: true|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-
 
 ### Association
 - belongs_to :group
