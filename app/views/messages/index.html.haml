@@ -1,0 +1,39 @@
+.wrapper
+  .chat-side
+    .side-header
+      %p.side-header__user-name  ta-ni-
+      %ul.user-menu
+        %li.user-menu__edit-user
+          = link_to root_path do
+            %i.fa.fa-edit
+        %li.user-menu__new-group
+          = link_to root_path do
+            %i.fa.fa-cog
+    .groups
+      = link_to root_path do
+        .group
+          %p.group__group-name  test
+          %p.group__latest-message  latest
+  .chat-main
+    .main-header
+      .current-group
+        %h2.current-group__name  test2
+        %ul.member-list
+          %li.member-list__member  member
+      = link_to root_path do
+        .main-header__edit-btn  Edit
+    .messages
+      .message
+        .upper-info
+          .upper-info__user  user
+          .upper-info__data  data
+        .message__text  taxt
+    .form
+      .new-message
+        .input-box
+          %input.input-box__text{placeholder: "type a message", name: "message[content]", type: "text", id: "message_content"}
+          %label.image-label{for: "message_image"}
+            %i.fa.fa-image
+              %before
+            %input.image-label__input{type: "file", name: "message[image]", id: "message_image"}
+        %input.new-message__submit-btn{name: "commit", type: "submit", value: "Send"}
