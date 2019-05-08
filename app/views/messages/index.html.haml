@@ -13,8 +13,12 @@
     .groups
       = link_to root_path do
         .group
-          %p.group__group-name  test
-          %p.group__latest-message  latest
+          - current_user.groups.each do |group|
+            = link_to group_messages_path(group) do
+              %p.group__group-name
+                = group.name
+              %p.group__latest-message
+                メッセージはまだありません。
   .chat-main
     .main-header
       .current-group
