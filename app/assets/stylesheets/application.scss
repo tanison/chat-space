@@ -1,7 +1,9 @@
-@import "./reset";
-@import "./config";
+@import "config/reset";
+@import "config/config";
+@import "config/colors";
 @import "./wrapper";
-@import "./chat-side";
-@import "./chat-main";
-
-
+@import "modules/chat-side";
+@import "modules/chat-main";
+@import "modules/user";
+@import "modules/flash";
+@import "modules/group";

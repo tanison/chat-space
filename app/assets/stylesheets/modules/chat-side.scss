@@ -42,30 +42,17 @@ $base-color: white;
     background-color: #2f3e51;
     padding: 20px 20px 0;
     overflow: scroll;
-    a{
+    .group{
       color: $base-color;
-      .group{
-        margin-bottom: 40px;
-        &__group-name{
-          font-size: 15px;
-          margin-bottom: 5px;
-        }
-        &__latest-message{
-          font-size: 11px;
-        }
+      padding-bottom: 40px;
+      &__group-name{
+        font-size: 15px;
+        margin-bottom: 5px;
+        color: $base-color;
       }
-    }
-    a{
-      color: $base-color;
-      .group{
-        margin-bottom: 40px;
-        &__group-name{
-          font-size: 15px;
-          margin-bottom: 5px;
-        }
-        &__latest-message{
-          font-size: 11px;
-        }
+      &__latest-message{
+        font-size: 11px;
+        color: $base-color;
       }
     }
   }
