@@ -9,11 +9,11 @@
       %li.user-menu__edit-user
         = link_to edit_user_path(current_user) do
           %i.fa.fa-cog
-    .groups
-      - current_user.groups.each do |group|
-        .group
-          = link_to group_messages_path(group) do
-            %p.group__group-name
-              = group.name
-            %p.group__latest-message
-              メッセージはまだありません。
+  .groups
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          %p.group__group-name
+            = group.name
+          %p.group__latest-message
+            = group.show_last_message
