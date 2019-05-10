@@ -9,6 +9,7 @@ RSpec.describe Message, type: :model do
 
       it 'is valid with imge' do
         expect(build(:message, content: nil)).to be_valid
+      end
 
       it 'is valid with contet and image' do
         expect(build(:message)).to be_valid
@@ -31,7 +32,7 @@ RSpec.describe Message, type: :model do
       it 'is invaid without user_id' do
         message = build(:message, user_id: nil)
         message.valid?
-        expect(message.errors[:user_id]).to include('を入力してください')
+        expect(message.errors[:user]).to include('を入力してください')
       end
     end
   end
