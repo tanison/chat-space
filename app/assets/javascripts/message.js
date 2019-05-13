@@ -16,7 +16,7 @@ $(function(){
               ${message.content}
             </p>
           </div>
-          <asset_path src=${message.image} >
+          <img src=${message.image} >
         </div>`
       return html;
     } else {
@@ -41,7 +41,6 @@ $(function(){
   }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    console.log(1);
     var formData = new FormData(this);
     var url = $(this).attr('action')
     $.ajax({
@@ -53,14 +52,12 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      console.log(2);
       var html = buildHTML(data);
       $('.messages').append(html);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       $('form')[0].reset();
     })
     .fail(function(){
-      console.log(3);
       alert('error');
     })
     return false;
