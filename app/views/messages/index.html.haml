@@ -9,19 +9,12 @@
       = link_to edit_group_path(current_user) do
         .main-header__edit-btn  Edit
     .messages
-      = render partial: 'message', collection: @messages
+      = render @messages
     .form
       = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message', id: 'new_message'
         .form__mask
           = f.label :image, class: 'form__mask__image' do
             %i.fa.fa-image
             = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'form__submit'
-        -# .input-box
-        -#   %input.input-box__text{placeholder: "type a message", name: "message[content]", type: "text", id: "message_content"}
-        -#   %label.image-label{for: "message_image"}
-        -#     %i.fa.fa-image
-        -#       %before
-        -#     %input.image-label__input{type: "file", name: "message[image]", id: "message_image"}
-        -# %input.new-message__submit-btn{name: "commit", type: "submit", value: "Send"}
