@@ -1,49 +1,75 @@
 $(function() {
+
+  var search_list = $(".chat-group-users.clearfix.js-chat-member");
+
+  function appendUser(user) {
+    var html =
+                `<div class="chat-group-user clearfix">
+                <p class="chat-group-user__name">${user.name}</p>
+                <div class="user-search-add chat-group-user__btn chat-group-user__btn--add", id="user-add" data-user-id=${user.id} data-user-name="${user.name}">追加</div>
+                </div>`
+  console.log(4)
+  search_list.append(html);
+  }
+
+  function appendErrMsgToHTML(msg) {
+    var html = `<li>
+                  <div class='listview__element--right-icon'>${ msg }</div>
+                </li>`
+                console.log(5)
+    search_list.append(html);
+  }
+
+  function buildHTML(user){
+    var html =
+            `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+            <input name='group[user_ids][]' type='hidden' value='${user.id}'>
+            <p class='chat-group-user__name'>${user.name}</p>
+            <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+          </div>`
+          return html;
+  }
+
   $(".user__input").on("keyup", function() {
     var input = $(".user__input").val();
     console.log(1)
     $.ajax({
       type: 'GET',
-      url: '/users/search',
+      url: '/users',
       data: { name: input },
       dataType: 'json'
     })
 
-  //  .done(function(users) {
-  //    $(".chat-group-users.clearfix.js-chat-member").empty();
-  //    if (users.length !== 0) {
-  //      user.forEach(function(users){
-  //        appendProduct(user);
-  //      });
-  //    }
-    //  else {
-    //    appendErrMsgToHTML("一致する映画はありません");
-    //  }
-   })
+    .done(function(users) {
+      $(".chat-group-users.clearfix.js-chat-member").empty();
+      console.log(2)
+      if (users.length !== 0) {
+        users.forEach(function(user){
+          appendUser(user);
+        });
+      }
+      else {
+        appendErrMsgToHTML("一致するUserはいません");
+      }
+    })
+
+    .fail(function(){
+      console.log(3)
+      // alert('error');
+    })
+    return false;
+
+   });
+    // ドキュメント上すべてのinput要素に対して
+    // inputイベントを設定する
+    // onの第1引数にイベント名を
+    // 第2引数に設定対象のid等を記述する
+    $(document).on("click", "#user-add", function() {
+      var html = buildHTML();
+    });
+
+    // ここで追加したコントロールにもイベントが設定される
+    // $('#container').after('<input type="text" id="fuga-text">');
+
   });
-// });
-// $(function(){
-//   $('#new_message').on('submit', function(e){
-//     e.preventDefault();
-//     var formData = new FormData(this);
-//     var url = $(this).attr('action')
-//     $.ajax({
-//       url: url,
-//       type: "POST",
-//       data: formData,
-//       dataType: 'json',
-//       processData: false,
-//       contentType: false
-//     })
-//     .done(function(data){
-//       var html = buildHTML(data);
-//       $('.messages').append(html);
-//       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-//       $('form')[0].reset();
-//     })
-//     .fail(function(){
-//       alert('error');
-//     })
-//     return false;
-//   });
-// });
+

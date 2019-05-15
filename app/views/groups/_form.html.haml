@@ -17,7 +17,7 @@
       = f.text_field :name, name: 'search', class: 'user__input' , placeholder: '追加したいユーザー名を入力してください'
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      = f.label :チャットメンバー ,class: 'chat-group-form_input'
+      = f.label :チャットメンバー ,class: 'chat-group-form__label'
     .chat-group-form__field--right
       .chat-group-users.js-add-user
         .chat-group-users.clearfix.js-chat-member
@@ -26,3 +26,12 @@
     .chat-group-form__field--left
     .chat-group-form__field--right
       = f.submit class: 'chat-group-form__action-btn'
+-# <div class='chat-group-form__field--left'>
+-#   <label class="chat-group-form__label" for="chat_group_チャットメンバーを追加">チャットメンバーを追加</label>
+-# </div>
+-# <div class='chat-group-form__field--right'>
+-#   <div class='chat-group-form__search clearfix'>
+-#     <input class='chat-group-form__input' id='user-search-field' placeholder='追加したいユーザー名を入力してください' type='text'>
+-#   </div>
+-#   <div id='user-search-result'></div>
+-# </div>
