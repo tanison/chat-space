@@ -23,11 +23,10 @@ $(function() {
   // var search_list = $(".chat-group-users.clearfix.js-chat-member");
 
   function buildHTML(user_name, user_id){
-    debugger
     var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-              <input name='group[user_ids][]' type='hidden' value='${user_id}'>
-              <p class='chat-group-user__name'>${user_name}</p>
-              <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+                <input name='group[user_ids][]' type='hidden' value='${user_id}'>
+                <p class='chat-group-user__name'>${user_name}</p>
+                <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
               </div>`
           console.log(9)
     return html;
@@ -72,6 +71,8 @@ $(function() {
       var user_name = $(this).data("user-name");
       var html = buildHTML(user_name, user_id);
       $('.chat-group-users.clearfix.js-add-user').append(html);
+      // $('.chat-group-users').remove();
+      $(this).parent().remove()
       console.log(7)
     });
 
