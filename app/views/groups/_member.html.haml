@@ -1,8 +1,11 @@
-.chat-group-user.clearfix.js-chat-member#chat-group-user_id
-  %i name='group[user_ids][]' value='${user_id}'
-  %p.chat-group-user__name  ${user_name}
-  -# - if current_user?
-    .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn#user-adder  削除
+- @group.users.each do |user|
+  .chat-group-user.clearfix.js-chat-member#chat-group-user_id
+    %input{name: 'group[user_ids][]', value: "#{user.id}", type: 'hidden'}
+    %p.chat-group-user__name
+      = user.name
+    - unless current_user == user
+      .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn#user-adder  削除
+    -# - if current_user?
 
 
 

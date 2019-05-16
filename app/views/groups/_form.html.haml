@@ -15,7 +15,7 @@
     .chat-group-form__field--left
       = f.label :チャットメンバーを追加, class:'chat-group-form__label'
     .chat-group-form__field--right
-      = f.text_field :name, name: 'search', class: 'user__input' , placeholder: '追加したいユーザー名を入力してください', id: 'user'
+      = f.text_field :user_ids, name: 'search', class: 'user__input' , placeholder: '追加したいユーザー名を入力してください', id: 'user', value: ''
       .chat-group-users.clearfix.js-chat-member
 
   .chat-group-form__field.clearfix
