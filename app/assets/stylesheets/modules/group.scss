@@ -37,6 +37,7 @@
       margin: 0;
       padding: 0;
       font-size: 13px;
+      list-style: none;
     }
   }
 
@@ -59,6 +60,9 @@
     .chat-group-form__field--right {
       float: right;
       width: 70%;
+      li {
+        list-style: none;
+      }
     }
 
     .chat-group-form__label {

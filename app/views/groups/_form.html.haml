@@ -10,20 +10,21 @@
       = f.label :グループ名, class: 'chat-group-form__label'
     .chat-group-form__field--right
       = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
+
   .chat-group-form__field
     .chat-group-form__field--left
       = f.label :チャットメンバーを追加, class:'chat-group-form__label'
     .chat-group-form__field--right
-      = f.text_field :name, name: 'search', class: 'user__input' , placeholder: '追加したいユーザー名を入力してください'
+      = f.text_field :name, name: 'search', class: 'user__input' , placeholder: '追加したいユーザー名を入力してください', id: 'user'
       .chat-group-users.clearfix.js-chat-member
+
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :チャットメンバー ,class: 'chat-group-form__label'
     .chat-group-form__field--right
-      .chat-group-users.clearfix
-        = current_user.name
+      = render "member"
       .chat-group-users.clearfix.js-add-user
-        -# = f.collection_check_boxes :user_ids, :id, :name
+
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
@@ -37,3 +38,4 @@
 -#   </div>
 -#   <div id='user-search-result'></div>
 -# </div>
+-# = f.collection_check_boxes :user_ids, :id, :name
