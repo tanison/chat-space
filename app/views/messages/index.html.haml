@@ -1,15 +1,16 @@
 .wrapper
   = render 'shared/side_bar'
+  - @gruop
   .chat-main
     .main-header
       .current-group
         %h2.current-group__name  group
         %ul.member-list
           %li.member-list__member  Memmber
-      = link_to edit_group_path(current_user) do
+      = link_to edit_group_path(@group) do
         .main-header__edit-btn  Edit
     .messages
-      = render @messages
+      = render partial: 'message', collection: @messages
     .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message', id: 'new_message'
