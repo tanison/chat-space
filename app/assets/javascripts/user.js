@@ -48,7 +48,7 @@ $(function() {
     })
 
     .fail(function(){
-      alert('error');
+      alert('インクリメンタルサーチがエラーです');
     })
     return false;
 
