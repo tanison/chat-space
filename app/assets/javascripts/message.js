@@ -40,7 +40,7 @@ $(function(){
       $('form')[0].reset();
     })
     .fail(function(){
-      alert('error');
+      alert('非同期通信がエラーです');
     })
     return false;
   });
@@ -65,7 +65,7 @@ $(function(){
     })
     .fail(function() {
       console.log('error');
-      // alert('error');
+      alert('自動更新がエラーです');
     });
 
   }
