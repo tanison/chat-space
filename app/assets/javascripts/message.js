@@ -64,8 +64,26 @@ $(function(){
       })
     })
     .fail(function() {
-      alert('error');
+      console.log('error');
+      // alert('error');
     });
+
   }
-  setInterval(reloadMessages, 2500);
+
+
+  // (window.location.href.match(/\/groups\/\d+messages/) ? setInterval(reloadMessages, 2500) : "" ;
+
+
+  // if (window.location.href.match(/\/groups\/\d+messages/)) {
+  // // setInterval(reloadMessages, 5000);
+  // clearInterval(reloadMessages, 5000);
+  // // clearInterval(interval);
+  // } else {
+  // // fanction();
+  // setInterval(reloadMessages, 5000);
+  // // clearInterval(reloadMessages, 5000);
+  // }
+  // window.setInterval(5000);
+
+  setInterval(reloadMessages, 5000);
 });
