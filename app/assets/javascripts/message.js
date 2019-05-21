@@ -40,10 +40,11 @@ $(function(){
       $('form')[0].reset();
     })
     .fail(function(){
-      alert('非同期通信がエラーです');
+      alert('非同期通信に失敗しました');
     })
     return false;
   });
+
   var reloadMessages = function() {
     var last_message = $('.message:last');
     last_message_id = last_message.data('message-id');
@@ -61,29 +62,20 @@ $(function(){
       var html = buildHTML(message);
       $('.messages').append(html);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      clearInterval(setInterval(reloadMessages, 5000))
       })
     })
     .fail(function() {
-      console.log('error');
-      alert('自動更新がエラーです');
+      alert('自動更新に失敗しました');
     });
 
   }
 
+  var url = location.href;
+  var path = location.pathname;
+  var group_id = path.replace(/[^0-9]/g,'');
+  if(url === `http://localhost:3000/groups/${group_id}/messages`){
+    setInterval(reloadMessages, 5000);
+  }
 
-  // (window.location.href.match(/\/groups\/\d+messages/) ? setInterval(reloadMessages, 2500) : "" ;
-
-
-  // if (window.location.href.match(/\/groups\/\d+messages/)) {
-  // // setInterval(reloadMessages, 5000);
-  // clearInterval(reloadMessages, 5000);
-  // // clearInterval(interval);
-  // } else {
-  // // fanction();
-  // setInterval(reloadMessages, 5000);
-  // // clearInterval(reloadMessages, 5000);
-  // }
-  // window.setInterval(5000);
-
-  setInterval(reloadMessages, 5000);
 });
