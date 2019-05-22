@@ -62,7 +62,7 @@ $(function(){
       var html = buildHTML(message);
       $('.messages').append(html);
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-      clearInterval(setInterval(reloadMessages, 5000))
+      // clearInterval(setInterval(reloadMessages, 5000))
       })
     })
     .fail(function() {
@@ -71,11 +71,19 @@ $(function(){
 
   }
 
-  var url = location.href;
-  var path = location.pathname;
-  var group_id = path.replace(/[^0-9]/g,'');
-  if(url === `http://localhost:3000/groups/${group_id}/messages`){
-    setInterval(reloadMessages, 5000);
-  }
+  $(function(){
+    if (location.pathname.match(/message/)){
+      setInterval(reloadMessages, 5000);
+    }
+    else {
+      clearInterval(reloadMessages);
+    };
+  });
+  // var url = location.href;
+  // var path = location.pathname;
+  // var group_id = path.replace(/[^0-9]/g,'');
+  // if(url === `http://localhost:3000/groups/${group_id}/messages`){
+  //   setInterval(reloadMessages, 5000);
+  // }
 
 });
