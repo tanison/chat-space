@@ -37,7 +37,7 @@ $(function() {
 
     .done(function(users) {
       $(".chat-group-users.clearfix.js-chat-member").empty();
-      if (users.length !== 0) {
+      if (users.length !== 0 && input.length >= 1) {
         users.forEach(function(user){
           appendUser(user);
         });
